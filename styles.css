@@ -1,5 +1,29 @@
-body {
-    margin: 0;
-    background: #ff00ff;
-    text-align: left;
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style for each section */
+.experience-section, .projects-section, .about-section {
+    background-color: #fff8e1;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Projects list style */
+.projects-section ul {
+    list-style: none;
+}
+
+.projects-section li:before {
+    content: "\2192"; /* Unicode arrow character */
+    display: inline-block;
+    margin-right: 10px;
 }
