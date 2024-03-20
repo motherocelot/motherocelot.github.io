@@ -9,7 +9,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Style for each section */
 .experience-section, .projects-section, .about-section {
     background-color: #fff8e1;
     border-radius: 10px;
@@ -17,13 +16,12 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Projects list style */
 .projects-section ul {
     list-style: none;
 }
 
 .projects-section li:before {
-    content: "\2192"; /* Unicode arrow character */
+    content: "\2192";
     display: inline-block;
     margin-right: 10px;
 }
