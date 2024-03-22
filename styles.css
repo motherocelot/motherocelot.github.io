@@ -16,6 +16,18 @@ h1 {
     margin-bottom: 20px;
 }
 
+.box {
+    background-color: #fff8e1;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease; /* Add transition for smooth effect */
+}
+
+.box:hover {
+    transform: scale(1.1); /* Grow the box when hovered */
+}
+
 .projects-section ul {
     list-style: none;
 }
