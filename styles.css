@@ -19,6 +19,10 @@ h1 {
     cursor: pointer; 
 }
 
+.box:hover {
+    transform: scale(1.1); /* Grow the box when hovered */
+}
+
 .expanded {
     transform: scale(1.1); 
     background-color: lightblue; 
