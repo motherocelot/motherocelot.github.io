@@ -9,37 +9,17 @@ h1 {
     margin-bottom: 20px;
 }
 
-.experience-section, .projects-section, .about-section {
-    background-color: #fff8e1;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
+/* Style for each section */
 .box {
     background-color: #fff8e1;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
     transition: transform 0.3s ease; /* Add transition for smooth effect */
-    cursor: pointer;
-}
-
-.box:hover {
-    transform: scale(1.1); /* Grow the box when hovered */
-}
-
-.projects-section ul {
-    list-style: none;
+    cursor: pointer; 
 }
 
 .expanded {
-    transform: scale(1.1); /* Grow the box */
-    background-color: aqua;
-}
-
-.projects-section li:before {
-    content: "\2192";
-    display: inline-block;
-    margin-right: 10px;
+    transform: scale(1.1); 
+    background-color: lightblue; 
 }
