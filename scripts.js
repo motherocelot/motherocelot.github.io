@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Toggle the 'expanded' class when clicked
             this.classList.toggle('expanded');
 
-            boxes.forEach(function(otherBox)) {
+            boxes.forEach(function(otherBox) {
                 if (otherBox !== box) {
                     otherBox.classList.remove('expanded');
                 }
-            }
+            });
         });
     });
 });
