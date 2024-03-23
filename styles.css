@@ -2,41 +2,44 @@
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
-    display: flex;
 }
 
-.sidebar {
-    flex: 0 0 200px; /* Fixed width for the sidebar */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.sidebar .box {
+.experience-section, .projects-section, .about-section {
     background-color: #fff8e1;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
 }
 
-.popout-menu {
+.box {
     background-color: #fff8e1;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
+    transition: transform 0.3s ease; /* Add transition for smooth effect */
+    cursor: pointer;
 }
 
-.popout-menu ul {
-    list-style-type: none;
-    padding: 0;
+.box:hover {
+    transform: scale(1.1); /* Grow the box when hovered */
 }
 
-.popout-menu ul li {
-    margin-bottom: 10px;
+.projects-section ul {
+    list-style: none;
 }
 
-.popout-menu ul li a {
-    text-decoration: none;
-    color: #333;
+.expanded {
+    transform: scale(1.1); /* Grow the box */
+    background-color: aqua;
 }
 
-.popout-menu ul li a:hover {
-    color: #007bff;
+.projects-section li:before {
+    content: "\2192";
+    display: inline-block;
+    margin-right: 10px;
 }
