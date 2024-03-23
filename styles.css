@@ -32,6 +32,10 @@ h1 {
     list-style: none;
 }
 
+.expanded {
+    transform: scale(1.1); /* Grow the box */
+}
+
 .projects-section li:before {
     content: "\2192";
     display: inline-block;
