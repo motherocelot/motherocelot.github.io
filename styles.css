@@ -3,13 +3,13 @@
     padding: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     box-sizing: border-box;
-    background: #fff8c3;
+    background: #fff;
 }
 
 .header {
     width: 100%;
     height: 100vh;
-    background: antiquewhite;
+    background: #fff;
     padding-left: 11%;
     padding-right: 8%;
     position: relative;
@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 30px 0 15px;
-    border-bottom: 1px solid #fff8c3;
+    border-bottom: 1px solid #fff;
 }
 
 .top-nav ul li {
@@ -34,7 +34,7 @@
 
 .top-nav ul li a {
     text-decoration: none;
-    color: #ffffee;
+    color: #fff;
     font-size: 15px;
 }
 
