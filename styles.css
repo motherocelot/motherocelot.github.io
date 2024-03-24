@@ -1,15 +1,16 @@
-body, html {
+* {
     margin: 0;
     padding: 0;
-    height: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box;
 }
 
 .header {
-    text-align: center;
-    margin-top: 20px; /* Adjust the margin-top as needed */
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
     background-color: antiquewhite;
+    padding-left: 11%;
+    padding-right: 8%;
     position: relative;
 }
 
@@ -52,6 +53,12 @@ body, html {
     top: 0;
     width: 100px;
     height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 0;
+    
 }
 
 .container-wrapper {
@@ -72,49 +79,8 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Style for each section */
-.box {
-    background-color: #fff8e1;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease; /* Add transition for smooth effect */
-    cursor: pointer; 
-}
-
-.box:hover {
-    transform: scale(1.1); /* Grow the box when hovered */
-}
-
-.expanded {
-    transform: scale(1.1); 
-    background-color: lightblue; 
-}
 
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Style for each section */
-.box {
-    background-color: #fff8e1;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease; /* Add transition for smooth effect */
-    cursor: pointer; 
-}
-
-.box:hover {
-    transform: scale(1.1); /* Grow the box when hovered */
-}
-
-.expanded {
-    transform: scale(1.1); 
-    background-color: lightblue; 
-}
 
 footer {
     text-align: left;
