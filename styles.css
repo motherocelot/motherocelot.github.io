@@ -10,14 +10,6 @@ header {
     animation: moveUp 2s ease-in-out infinite alternate; /* Motion animation */
 }
 
-@keyframes moveUp {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-20px); /* Adjust the distance to move up */
-    }
-}
 
 .container-wrapper {
     display: flex;
@@ -54,14 +46,6 @@ h1 {
 .expanded {
     transform: scale(1.1); 
     background-color: lightblue; 
-}
-
-footer {
-    text-align: left;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-top: 1px solid #ccc;
-    margin-top: auto;
 }
 
 
