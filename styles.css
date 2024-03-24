@@ -4,7 +4,22 @@ body, html {
     height: 100%;
 }
 
-.container-wrap {
+header {
+    text-align: center;
+    margin-top: 20px; /* Adjust the margin-top as needed */
+    animation: moveUp 2s ease-in-out infinite alternate; /* Motion animation */
+}
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-20px); /* Adjust the distance to move up */
+    }
+}
+
+.container-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,6 +31,39 @@ body, html {
     padding: 20px;
     width: 100%;
 }
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style for each section */
+.box {
+    background-color: #fff8e1;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease; /* Add transition for smooth effect */
+    cursor: pointer; 
+}
+
+.box:hover {
+    transform: scale(1.1); /* Grow the box when hovered */
+}
+
+.expanded {
+    transform: scale(1.1); 
+    background-color: lightblue; 
+}
+
+footer {
+    text-align: left;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ccc;
+    margin-top: auto;
+}
+
 
 h1 {
     text-align: center;
