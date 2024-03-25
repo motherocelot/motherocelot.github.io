@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 30px 0 15px;
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid #fff;
 }
 
 .top-nav ul li {
@@ -91,7 +91,7 @@
 .text-box {
     margin-top: 20%;
     font-size: 18px;
-    color: #fff;
+    color: #ff00;
 }
 
 .text-box h1{
