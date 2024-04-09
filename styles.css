@@ -88,20 +88,29 @@
 
 /* Style the accordion heading */
 .accordion-heading {
-  background-color: #f1f1f1;
+  background-color: #4f5dad;
   color: black;
   padding: 10px;
   font-size: 16px;
-  cursor: pointer;
+  cursor: pointer; 
+  text-align: center; 
+  margin: 0 auto; 
+  max-width: 200px; 
+  border-radius: 10px;
+  transition: background-color 0.3s;
 }
 
-/* Style the accordion content (hidden by default) */
+
+.accordion-heading:hover {
+  background-color: #ccc; 
+}
+
 .accordion-content {
   display: none;
   padding: 10px;
 }
 
-/* Show the accordion content when the heading is clicked */
+
 .accordion-heading.active + .accordion-content {
   display: block;
 }
