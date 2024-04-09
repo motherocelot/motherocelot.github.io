@@ -86,6 +86,36 @@
     width: max-content;
 }
 
+/* Style the accordion heading */
+.accordion-heading {
+  background-color: #4f5dad;
+  color: black;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer; 
+  text-align: center; 
+  margin: 0 auto; 
+  max-width: 200px; 
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+
+.accordion-heading:hover {
+  background-color: #ccc; 
+}
+
+.accordion-content {
+  display: none;
+  padding: 10px;
+}
+
+
+.accordion-heading.active + .accordion-content {
+  display: block;
+}
+
+
 .text-box {
     margin-top: 20%;
     font-size: 18px;
