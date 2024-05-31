@@ -86,35 +86,6 @@
     width: max-content;
 }
 
-/* Style the accordion heading */
-.accordion-heading {
-  background-color: radial-gradient(circle, rgba(255,125,125,0.6965161064425771) 65%, rgba(156,154,249,1) 94%);
-  color: black;
-  padding: 12px;
-  font-size: 16px;
-  cursor: pointer; 
-  text-align: center; 
-  margin: 0 auto; 
-  max-width: 200px; 
-  border-radius: 10px;
-  transition: background-color 0.3s;
-}
-
-.accordion-heading:hover {
-  background-color: #ccc; 
-}
-
-.accordion-content {
-  display: none;
-  padding: 10px;
-}
-
-
-.accordion-heading.active + .accordion-content {
-  display: block;
-}
-
-
 .text-box {
     margin-top: 20%;
     font-size: 18px;
