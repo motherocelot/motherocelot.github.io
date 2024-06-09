@@ -114,3 +114,11 @@
 .text-box .icon img {
     width: 15px;
 }
+
+.profile-picture img {
+    width: 200px; /* Adjust the width as needed */
+    height: auto; /* To maintain aspect ratio */
+    border-radius: 50%; /* Make the image round */
+    margin-bottom: 20px; /* Add some space below the image */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
+}
