@@ -1,32 +1,188 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home | Lucas Long GIS Portfolio</title>
-  <link rel="stylesheet" href="assets/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIS Portfolio - Home</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind and Font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gis-blue': '#10567A', // Deep blue, like a water body or map theme
+                        'gis-accent': '#6EE7B7', // Light mint green for highlights (like feature borders)
+                        'gis-light': '#F4F7F8', // Off-white for background
+                        'gis-dark': '#1F2937', // Dark gray for text
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    // Custom animation for the map grid background
+                    keyframes: {
+                        'grid-move': {
+                            '0%': { backgroundPosition: '0 0' },
+                            '100%': { backgroundPosition: '500px 500px' },
+                        }
+                    },
+                    animation: {
+                        'grid-bg': 'grid-move 60s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F4F7F8;
+            color: #1F2937;
+        }
+
+        /* The custom "flare" element: a subtle animated grid background */
+        .map-background {
+            background-image: linear-gradient(to right, rgba(16, 86, 122, 0.1) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(16, 86, 122, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 60s linear infinite; /* Apply custom animation */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        /* Hover effect for interactive elements */
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(16, 86, 122, 0.2);
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="nav-title">Lucas Long</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="cv.html">CV</a>
-      <a href="about.html">About Me</a>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <h1>Welcome to My GIS Portfolio</h1>
-      <p>Explore my geospatial work and interests!</p>
-    </section>
-  </main>
+    <!-- The subtle animated background grid -->
+    <div class="map-background"></div>
 
-  <footer>
-    <p>&copy; 2025 Lucas Long | Hosted on GitHub Pages</p>
-  </footer>
+    <!-- Header and Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <a href="index.html" class="text-2xl font-bold text-gis-blue hover:text-gis-accent transition duration-300">
+                [Your Initials] GIS
+            </a>
+            <!-- Desktop Navigation: Uses relative paths -->
+            <nav class="hidden md:flex space-x-8">
+                <!-- Correct relative paths: file in the same directory -->
+                <a href="about.html" class="text-gis-dark hover:text-gis-blue font-medium transition duration-300">About Me</a>
+                <a href="projects.html" class="text-gis-dark hover:text-gis-blue font-medium transition duration-300">Projects</a>
+                <a href="cv.html" class="text-gis-dark hover:text-gis-blue font-medium transition duration-300">Resume/CV</a>
+                <!-- Contact link is an anchor to a section on THIS page -->
+                <a href="#contact" class="text-gis-dark hover:text-gis-blue font-medium transition duration-300">Contact</a>
+            </nav>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-md text-gis-blue hover:bg-gis-light focus:outline-none focus:ring-2 focus:ring-gis-blue">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default): Uses relative paths -->
+        <nav id="mobile-menu" class="md:hidden hidden px-4 pt-2 pb-4 space-y-2 bg-white/90 backdrop-blur-sm border-t">
+            <!-- Correct relative paths: file in the same directory -->
+            <a href="about.html" class="block text-gis-dark hover:text-gis-blue font-medium transition duration-300 p-2 rounded-md">About Me</a>
+            <a href="projects.html" class="block text-gis-dark hover:text-gis-blue font-medium transition duration-300 p-2 rounded-md">Projects</a>
+            <a href="cv.html" class="block text-gis-dark hover:text-gis-blue font-medium transition duration-300 p-2 rounded-md">Resume/CV</a>
+            <a href="#contact" class="block text-gis-dark hover:text-gis-blue font-medium transition duration-300 p-2 rounded-md">Contact</a>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Home/Hero Section -->
+        <section id="home" class="py-20 text-center">
+            <h1 class="text-5xl sm:text-7xl font-extrabold text-gis-blue mb-4">
+                [Your Name]
+            </h1>
+            <p class="text-xl sm:text-2xl text-gis-dark max-w-3xl mx-auto mb-8">
+                <span class="font-semibold text-gis-blue">Geography Undergraduate</span> &bull; GIS Concentration &bull; Spatial Data Analyst
+            </p>
+            <div class="flex justify-center space-x-4">
+                <!-- Link to projects.html using relative path -->
+                <a href="projects.html" class="px-6 py-3 bg-gis-blue text-white font-semibold rounded-lg shadow-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
+                    View Portfolio
+                </a>
+                <!-- Link to #contact section on this page -->
+                <a href="#contact" class="px-6 py-3 border border-gis-blue text-gis-blue font-semibold rounded-lg hover:bg-gis-blue hover:text-white transition duration-300 transform hover:scale-105">
+                    Get In Touch
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 border-t border-gis-blue/20">
+            <h2 class="text-4xl font-bold text-gis-blue mb-8 text-center">
+                <span class="border-b-4 border-gis-accent pb-1">Get In Touch</span>
+            </h2>
+            <div class="max-w-xl mx-auto text-center">
+                <p class="text-lg text-gis-dark mb-6">
+                    I am actively seeking internships and entry-level positions in GIS analysis and mapping. Feel free to connect!
+                </p>
+                <div class="space-y-4">
+                    <p class="text-xl font-semibold text-gis-blue">
+                        Email: <a href="mailto:your.email@example.com" class="text-gis-accent hover:text-gis-blue transition duration-300">your.email@example.com</a>
+                    </p>
+                    <p class="text-xl font-semibold text-gis-blue">
+                        LinkedIn: <a href="[Your LinkedIn URL]" target="_blank" class="text-gis-accent hover:text-gis-blue transition duration-300">[Your LinkedIn Profile]</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gis-dark text-white py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 [Your Name]. Built with a passion for Geospatial Technology.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Function to toggle the mobile menu
+            const toggleMenu = () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden', !isHidden);
+                // Update the button icon
+                mobileMenuBtn.innerHTML = isHidden
+                    ? '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>'
+                    : '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>';
+            };
+
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+
+            // Close menu when a link is clicked on mobile (especially the #contact link)
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    // Check if the link is not an external link and the menu is open
+                    if (!mobileMenu.classList.contains('hidden') && link.getAttribute('href').startsWith('#')) {
+                         toggleMenu();
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
