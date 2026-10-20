@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nevada environmental screening — Lucas Long</title>
+  <meta name="description" content="A statewide environmental suitability model for mineral exploration in Nevada, built for the Frank Arnott NGEA competition.">
+  <meta property="og:title" content="Environmental screening for mineral exploration in Nevada">
+  <meta property="og:image" content="../assets/img/nevada/thumb.jpg">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Lucas Long
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav">
+        <span class="sr-only">Menu</span>
+        <span class="bars" aria-hidden="true"></span>
+      </button>
+      <nav id="nav" class="nav">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#contact">Contact</a>
+        <a class="nav-resume" href="../assets/resume.pdf" download="Lucas_Long_Resume.pdf">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="case-head">
+        <div class="wrap">
+          <a class="back mono" href="../index.html#projects">← All projects</a>
+          <p class="eyebrow mono">2026 · Frank Arnott NGEA Mineral Exploration Competition</p>
+          <h1>Environmental screening for mineral exploration in Nevada</h1>
+          <p class="lede">
+            Most exploration targeting starts with geology. Our team started with the question
+            of where exploration would face the fewest environmental constraints, and built a
+            statewide model to answer it.
+          </p>
+
+          <dl class="case-facts">
+            <div><dt>My role</dt><dd>GIS Team Lead</dd></div>
+            <div><dt>Study area</dt><dd>State of Nevada</dd></div>
+            <div><dt>Analysis units</dt><dd>11,341 hex cells, 10 mi² each</dd></div>
+            <div><dt>Presented at</dt><dd>Society of Economic Geologists conference</dd></div>
+          </dl>
+        </div>
+      </header>
+
+      <div class="wrap case-body">
+
+        <figure class="case-figure case-figure-lead">
+          <button class="zoom" data-full="../assets/img/nevada/risk-zones.jpg" aria-label="Enlarge map: final environmental risk zones">
+            <img src="../assets/img/nevada/risk-zones.jpg" alt="Map of Nevada divided into a fine grid, colored by four suitability zones from minimal to high risk, with Prospect 1 and Prospect 2 marked" width="1275" height="1650">
+          </button>
+          <figcaption><span class="mono">Fig. 1</span> Final output. Every cell is classified into one of four environmental risk zones, with the team's two prospect locations shown on top.</figcaption>
+        </figure>
+
+        <div class="case-text">
+          <h2>The approach</h2>
+          <p>
+            We divided Nevada into a tessellation of 11,341 ten-square-mile hexagons and scored
+            every cell on three families of environmental constraint. Each input layer was
+            reclassified to a common 1–5 risk scale so they could be combined, then merged in a
+            weighted, null-safe composite. Natural Breaks (Jenks) split the composite scores into
+            four zones: minimal, low, moderate, and high risk.
+          </p>
+
+          <h3>1. Surface water</h3>
+          <p>
+            Stream and waterbody features from the USGS National Hydrography Dataset, filtered by
+            flow permanence. To refine drainage in target areas, USGS 3DEP LiDAR was processed into
+            a terrain model in GRASS GIS and derived flow paths (Fill, Flow Direction, Flow
+            Accumulation, stream extraction).
+          </p>
+
+          <h3>2. Groundwater</h3>
+          <p>
+            Basin-level risk from the Nevada Division of Water Resources 2023 Groundwater Basin
+            Indicators: water level decline, water rights commitments, surface water capture, and
+            proximity to mine dewatering, weighted 30/25/25/20.
+          </p>
+
+          <h3>3. Biodiversity</h3>
+          <p>
+            A composite of 41 threatened and endangered species, habitat, and migration corridor
+            layers. Species weren't treated equally. I scripted a tiered weighting based on federal
+            ESA status (endangered over threatened over sensitive) and how restricted each
+            species' range is, so a narrow-range endangered species counts for more than a
+            widespread sensitive one.
+          </p>
+        </div>
+
+        <div class="case-pair">
+          <figure class="case-figure">
+            <button class="zoom" data-full="../assets/img/nevada/groundwater-risk.jpg" aria-label="Enlarge map: groundwater risk">
+              <img src="../assets/img/nevada/groundwater-risk.jpg" alt="Nevada groundwater risk by basin in five classes from minimal to severe" loading="lazy" width="1275" height="1650">
+            </button>
+            <figcaption><span class="mono">Fig. 2</span> Groundwater risk from NDWR basin indicators.</figcaption>
+          </figure>
+          <figure class="case-figure">
+            <button class="zoom" data-full="../assets/img/nevada/biodiversity-risk.jpg" aria-label="Enlarge map: biodiversity risk">
+              <img src="../assets/img/nevada/biodiversity-risk.jpg" alt="Nevada composite biodiversity risk in five classes, highest along the eastern ranges and northern border" loading="lazy" width="1275" height="1650">
+            </button>
+            <figcaption><span class="mono">Fig. 3</span> Composite biodiversity risk from 41 species, habitat, and migration layers.</figcaption>
+          </figure>
+        </div>
+
+        <div class="case-text">
+          <h2>Automating it with ArcPy</h2>
+          <p>
+            Joining dozens of species layers to 11,341 cells by hand wasn't realistic. I wrote
+            ArcPy scripts in an ArcGIS Pro notebook to batch-clip inputs, run the bulk species
+            joins, calculate the 1–5 reclassification, apply the species weights, and compute
+            the final composite score.
+          </p>
+
+          <h2>Locating prospects</h2>
+          <p>
+            Alongside the environmental model, the team narrowed down prospect areas using target
+            geology, mapped faults, and regional geophysics. We also used hydrothermal alteration
+            mapping, classifying AVIRIS-5 hyperspectral imagery with Spectral Angle Mapper, using
+            a custom endmember library built from the USGS spectral library and resampled with
+            NumPy to the sensor's band centers.
+          </p>
+        </div>
+
+        <figure class="case-figure case-figure-wide">
+          <button class="zoom" data-full="../assets/img/nevada/target-geology.jpg" aria-label="Enlarge map: target geology and faults">
+            <img src="../assets/img/nevada/target-geology.jpg" alt="Nevada geophysical surface overlaid with normal and thrust faults and hatched target geology, with Prospect 1 and Prospect 2 marked" loading="lazy" width="1275" height="1650">
+          </button>
+          <figcaption><span class="mono">Fig. 4</span> Normal and thrust faults and potential deposit rock types over regional geophysics, with both prospects.</figcaption>
+        </figure>
+
+        <div class="case-text">
+          <h2>Tools &amp; methods</h2>
+          <ul class="tags">
+            <li>ArcGIS Pro</li><li>Spatial Analyst</li><li>Image Analyst</li><li>ArcGIS Online</li>
+            <li>GRASS GIS 8.3</li><li>QGIS</li><li>Python</li><li>ArcPy</li><li>NumPy</li>
+            <li>Weighted overlay</li><li>Jenks classification</li><li>Zonal statistics</li>
+            <li>Hydrologic modeling</li><li>Spectral Angle Mapper</li><li>Kernel density</li>
+          </ul>
+
+          <details class="sources">
+            <summary>Data sources</summary>
+            <ul>
+              <li>USGS 3DEP statewide DEM (1 arc-second) and LiDAR point clouds (NV_NorthWestElko_2020, NV_UpperHumboldt_2016)</li>
+              <li>USGS National Hydrography Dataset (NHDFlowline, NHDWaterbody)</li>
+              <li>Nevada Division of Water Resources, SE Groundwater Basins – Indicators Project (2023)</li>
+              <li>Team-built species, habitat, and migration corridor layer package and 10 mi² hexagon tessellation</li>
+              <li>Rockwell and Bonham (2016), USGS ASTER hydrothermal alteration maps</li>
+              <li>AVIRIS-5 hyperspectral imagery; USGS splib07 spectral library</li>
+              <li>USGS Geochron database; USGS Great Basin regional geophysical grids (1,000 m)</li>
+              <li>BLM Surface Management Agency land status; NBMG Nevada mining district boundaries</li>
+            </ul>
+          </details>
+        </div>
+
+        <nav class="case-next">
+          <a href="../index.html#projects">← Back to all projects</a>
+          <a href="../index.html#contact">Get in touch →</a>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <dialog class="lightbox" aria-label="Enlarged map">
+    <button class="lightbox-close" aria-label="Close">Close ✕</button>
+    <img alt="">
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© <span id="year">2026</span> Lucas Long</p>
+      <p class="mono">Roseville–Sacramento, CA</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
